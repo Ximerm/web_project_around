@@ -1,0 +1,57 @@
+.content {
+  max-width: 880px;
+}
+
+.profile {
+  max-width: 100%;
+  display: flex;
+  padding-top: 40px;
+  gap: 30px;
+}
+
+.profile__avatar {
+  border-radius: 50%;
+  max-width: 13.638%;
+}
+
+.profile__content {
+  display: flex;
+  gap: 18px;
+  flex-grow: 2;
+}
+
+.profile__info {
+  max-width: 89.88%;
+}
+
+.profile__name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+.profile__hobbie {
+  margin: 0;
+  font-size: 18px;
+  line-height: 21.78px;
+}
+
+.profile__edit-button {
+  max-width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 15px 0 0;
+  cursor: pointer;
+}
+
+.profile__add-button {
+  max-width: 150px;
+  height: 50px;
+  background: none;
+  border: none;
+  padding: 13px 0 0;
+  cursor: pointer;
+}

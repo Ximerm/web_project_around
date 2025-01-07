@@ -1,0 +1,24 @@
+.elements__container {
+  max-width: 68.75%;
+}
+
+.element {
+  width: 282px;
+}
+
+.element__icon-trash {
+}
+
+.element__photo {
+  width: 282px;
+  height: 282px;
+}
+
+.element__info {
+}
+
+.element__photo-name {
+}
+
+.element__photo-like {
+}

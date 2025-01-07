@@ -1,0 +1,12 @@
+.header {
+  max-width: 880px;
+}
+
+.header__logo {
+  max-width: 19.66%;
+}
+
+.header__line {
+  max-width: 100%;
+  padding-top: 41px;
+}

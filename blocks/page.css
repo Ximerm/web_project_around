@@ -1,0 +1,9 @@
+.page {
+  max-width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Inter";
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 45px 200px 60px;
+}
