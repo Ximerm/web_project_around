@@ -11,7 +11,7 @@
 
 .profile__avatar {
   border-radius: 50%;
-  max-width: 13.638%;
+  max-width: 120px;
 }
 
 .profile__content {
@@ -21,7 +21,7 @@
 }
 
 .profile__info {
-  max-width: 89.88%;
+  max-width: 415px;
 }
 
 .profile__name {

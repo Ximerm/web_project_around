@@ -1,9 +1,9 @@
 .page {
-  max-width: 100%;
-  background-color: #000000;
+  max-width: 880px;
+  width: 100%;
+  margin: 45px auto 60px;
   color: #ffffff;
   font-family: "Inter";
   font-size: 16px;
   box-sizing: border-box;
-  padding: 45px 200px 60px;
 }

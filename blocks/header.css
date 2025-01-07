@@ -1,9 +1,10 @@
 .header {
   max-width: 880px;
+  width: 100%;
 }
 
 .header__logo {
-  max-width: 19.66%;
+  max-width: 173px;
 }
 
 .header__line {

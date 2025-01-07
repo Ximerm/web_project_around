@@ -51,17 +51,139 @@
             />
           </button>
         </section>
-        <section class="elements__container">
-          <div class="element">
-            <button class="element__icon-trash"></button>
-            <img class="element__photo" src="" alt="Cartagena" />
-            <div class="element__info">
-              <h2 class="element__photo-name">Cartagena</h2>
-              <button class="element__photo-like"></button>
+
+        <section class="elements">
+          <div class="elements__element">
+            <img
+              class="elements__photo"
+              src="./images/Places/Cartagena.jpg"
+              alt="Cartagena"
+            />
+            <div class="elements__info">
+              <h2 class="elements__photo-name">Cartagena</h2>
+              <img
+                class="elements__photo-like"
+                src="./images/Places/Like_Vector.svg"
+                alt="Ícono 'Me gusta'"
+              />
+            </div>
+          </div>
+
+          <div class="elements__element">
+            <img
+              class="elements__photo"
+              src="./images/Places/Guatape.jpg"
+              alt="Guatape"
+            />
+            <div class="elements__info">
+              <h2 class="elements__photo-name">Guatapé</h2>
+              <img
+                class="elements__photo-like"
+                src="./images/Places/Like_Vector.svg"
+                alt="Ícono 'Me gusta'"
+              />
+            </div>
+          </div>
+
+          <div class="elements__element">
+            <img
+              class="elements__photo"
+              src="./images/Places/Pasto.jpg"
+              alt="Pasto"
+            />
+            <div class="elements__info">
+              <h2 class="elements__photo-name">Pasto</h2>
+              <img
+                class="elements__photo-like"
+                src="./images/Places/Like_Vector.svg"
+                alt="Ícono 'Me gusta'"
+              />
+            </div>
+          </div>
+
+          <div class="elements__element">
+            <img
+              class="elements__photo"
+              src="./images/Places/Raquira.jpg"
+              alt="Ráquira"
+            />
+            <div class="elements__info">
+              <h2 class="elements__photo-name">Ráquira</h2>
+              <img
+                class="elements__photo-like"
+                src="./images/Places/Like_Vector.svg"
+                alt="Ícono 'Me gusta'"
+              />
+            </div>
+          </div>
+
+          <div class="elements__element">
+            <img
+              class="elements__photo"
+              src="./images/Places/Sierra_Santa_Marta.jpg"
+              alt="Santa Marta"
+            />
+            <div class="elements__info">
+              <h2 class="elements__photo-name">Santa Marta</h2>
+              <img
+                class="elements__photo-like"
+                src="./images/Places/Like_Vector.svg"
+                alt="Ícono 'Me gusta'"
+              />
+            </div>
+          </div>
+
+          <div class="elements__element">
+            <img
+              class="elements__photo"
+              src="./images/Places/Valle_Cocora.jpg"
+              alt="Valle del Cocora"
+            />
+            <div class="elements__info">
+              <h2 class="elements__photo-name">Valle del Cocora</h2>
+              <img
+                class="elements__photo-like"
+                src="./images/Places/Like_Vector.svg"
+                alt="Ícono 'Me gusta'"
+              />
             </div>
           </div>
         </section>
       </main>
+
+      <footer class="footer">
+        <p class="footer__copyright">&copy;2025 Around The U.S.</p>
+      </footer>
     </div>
+
+    <section class="popup">
+      <div class="popup__container">
+        <img
+          class="popup__close"
+          src="./images/Popup/Close Icon.svg"
+          alt="Ícono cerrar formulario"
+        />
+        <form class="popup__form">
+          <h2 class="popup__form-title">Editar perfil</h2>
+          <input
+            class="popup__form-input"
+            type="text"
+            id="input-name"
+            name="name"
+            placeholder="Nombre"
+            required
+          />
+          <input
+            class="popup__form-input"
+            type="text"
+            name="job"
+            id="input-job"
+            placeholder="Acerca de mí"
+            required
+          />
+          <button type="submit" class="popup__form-submit">Guardar</button>
+        </form>
+      </div>
+    </section>
   </body>
 </html>
