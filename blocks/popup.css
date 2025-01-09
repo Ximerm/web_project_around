@@ -79,13 +79,20 @@
   margin-top: 18.26px;
   font-size: 18px;
   line-height: 21.78px;
-  color: #c4c4c4;
+  color: #ffffff;
   border: 1px solid #c4c4c4;
   border-radius: 2px;
-  background-color: #ffffff;
+  background-color: #000000;
   cursor: pointer;
 }
 
 .popup__form-submit:hover {
   opacity: 80%;
+}
+
+.popup__form-submit_disable {
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: default;
 }
