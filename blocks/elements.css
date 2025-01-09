@@ -50,3 +50,11 @@
   padding: 0;
   align-self: center;
 }
+
+.elements__photo-like:hover {
+  opacity: 50%;
+}
+
+.elements__photo-like:active {
+  background-color: #000000;
+}
