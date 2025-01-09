@@ -25,3 +25,13 @@
     padding-top: 36px;
   }
 }
+
+@media (min-width: 320px) and (max-width: 500px) {
+  .header__logo {
+    max-width: 126px;
+  }
+
+  .header__line {
+    padding-top: 32px;
+  }
+}

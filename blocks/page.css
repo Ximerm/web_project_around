@@ -12,9 +12,20 @@ body {
   box-sizing: border-box;
 }
 
+@media (min-width: 769px) and (max-width: 950px) {
+  .page {
+    max-width: 730px;
+  }
+}
+
 @media (min-width: 501px) and (max-width: 768px) {
   .page {
-    max-width: 100%;
-    width: 90%;
+    max-width: 465px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+  .page {
+    max-width: 282px;
   }
 }

@@ -39,6 +39,7 @@
             </div>
             <button class="profile__edit-button">
               <img
+                class="profile__edit-button-img"
                 src="./images/Profile/Edit_Button.svg"
                 alt="Botón para editar perfil"
               />
@@ -46,7 +47,8 @@
           </div>
           <button class="profile__add-button">
             <img
-              src="./images/Profile/Add_Button.png"
+              class="profile__add-button-img"
+              src="./images/Profile/Add_Button.svg"
               alt="Botón para agregar nueva imagen"
             />
           </button>
@@ -56,11 +58,11 @@
           <div class="elements__element">
             <img
               class="elements__photo"
-              src="./images/Places/Cartagena.jpg"
-              alt="Cartagena"
+              src="./images/Places/Cocha.JPG"
+              alt="La Cocha"
             />
             <div class="elements__info">
-              <h2 class="elements__photo-name">Cartagena</h2>
+              <h2 class="elements__photo-name">La Cocha</h2>
               <img
                 class="elements__photo-like"
                 src="./images/Places/Like_Vector.svg"
@@ -72,11 +74,11 @@
           <div class="elements__element">
             <img
               class="elements__photo"
-              src="./images/Places/Guatape.jpg"
-              alt="Guatape"
+              src="./images/Places/Casa_Mila.jpg"
+              alt="Casa Mila"
             />
             <div class="elements__info">
-              <h2 class="elements__photo-name">Guatapé</h2>
+              <h2 class="elements__photo-name">Casa Mila</h2>
               <img
                 class="elements__photo-like"
                 src="./images/Places/Like_Vector.svg"
@@ -88,11 +90,11 @@
           <div class="elements__element">
             <img
               class="elements__photo"
-              src="./images/Places/Pasto.jpg"
-              alt="Pasto"
+              src="./images/Places/Granada.JPG"
+              alt="Granada"
             />
             <div class="elements__info">
-              <h2 class="elements__photo-name">Pasto</h2>
+              <h2 class="elements__photo-name">Granada</h2>
               <img
                 class="elements__photo-like"
                 src="./images/Places/Like_Vector.svg"
@@ -104,11 +106,11 @@
           <div class="elements__element">
             <img
               class="elements__photo"
-              src="./images/Places/Raquira.jpg"
-              alt="Ráquira"
+              src="./images/Places/Jaipur.jpg"
+              alt="Jaipur"
             />
             <div class="elements__info">
-              <h2 class="elements__photo-name">Ráquira</h2>
+              <h2 class="elements__photo-name">Jaipur</h2>
               <img
                 class="elements__photo-like"
                 src="./images/Places/Like_Vector.svg"
@@ -120,11 +122,11 @@
           <div class="elements__element">
             <img
               class="elements__photo"
-              src="./images/Places/Sierra_Santa_Marta.jpg"
-              alt="Santa Marta"
+              src="./images/Places/Kubuswoning.jpg"
+              alt="Kubuswoning"
             />
             <div class="elements__info">
-              <h2 class="elements__photo-name">Santa Marta</h2>
+              <h2 class="elements__photo-name">Kubuswoning</h2>
               <img
                 class="elements__photo-like"
                 src="./images/Places/Like_Vector.svg"
@@ -136,11 +138,11 @@
           <div class="elements__element">
             <img
               class="elements__photo"
-              src="./images/Places/Valle_Cocora.jpg"
-              alt="Valle del Cocora"
+              src="./images/Places/Sagrada_Familia.JPG"
+              alt="Sagrada_Familia"
             />
             <div class="elements__info">
-              <h2 class="elements__photo-name">Valle del Cocora</h2>
+              <h2 class="elements__photo-name">Sagrada_Familia</h2>
               <img
                 class="elements__photo-like"
                 src="./images/Places/Like_Vector.svg"
@@ -160,7 +162,7 @@
       <div class="popup__container">
         <img
           class="popup__close"
-          src="./images/Popup/Close Icon.svg"
+          src="./images/Popup/Close_Icon.svg"
           alt="Ícono cerrar formulario"
         />
         <form class="popup__form">
@@ -182,7 +184,11 @@
             placeholder="Acerca de mí"
             required
           />
-          <button type="submit" class="popup__form-submit" id="submitBtn">
+          <button
+            type="submit"
+            class="popup__form-submit popup__form-submit_action_disable"
+            id="submitBtn"
+          >
             Guardar
           </button>
         </form>

@@ -12,6 +12,7 @@
 .profile__avatar {
   border-radius: 50%;
   max-width: 120px;
+  height: 120px;
 }
 
 .profile__content {
@@ -39,43 +40,67 @@
 }
 
 .profile__edit-button {
-  max-width: 24px;
+  width: 24px;
   height: 24px;
   background: none;
   border: none;
   padding: 15px 0 0;
   cursor: pointer;
+  box-sizing: content-box;
+  display: block;
 }
 
 .profile__edit-button:hover {
   opacity: 60%;
 }
 
+.profile__edit-button-img {
+  width: 100%;
+}
+
 .profile__add-button {
-  max-width: 150px;
+  width: 150px;
   height: 50px;
   background: none;
   border: none;
   padding: 13px 0 0;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 .profile__add-button:hover {
   opacity: 60%;
 }
 
-@media (min-width: 501px) and (max-width: 768px) {
-  .profile {
-    gap: 25px;
+.profile__add-button-img {
+  width: 100%;
+}
+
+@media (min-width: 769px) and (max-width: 950px) {
+  .profile__name {
+    font-size: 37px;
+    line-height: 41.63px;
   }
 
-  .profile__avatar {
-    height: 120px;
+  .profile__hobbie {
+    margin: 0;
+    font-size: 16px;
+    line-height: 18.94px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .profile {
+    gap: 20px;
   }
 
   .profile__content {
-    max-width: 62.5%;
-    flex-grow: 0.5;
+    max-width: 69.5%;
+    gap: 10px;
+  }
+
+  .profile__info {
+    max-width: 180px;
   }
 
   .profile__name {
@@ -84,21 +109,66 @@
   }
 
   .profile__hobbie {
-    margin: 0;
-    font-size: 16px;
-    line-height: 18.94px;
+    font-size: 14px;
+    line-height: 16.94px;
   }
 
   .profile__edit-button {
-    max-width: 21px;
+    width: 21px;
     height: 21px;
     padding-top: 5px;
   }
 
   .profile__add-button {
-    max-width: 100px;
-    height: 50px;
+    max-width: 90px;
+    height: 30px;
+    padding-top: 5px;
+  }
+}
 
-    flex-grow: 1;
+@media (min-width: 320px) and (max-width: 500px) {
+  .profile {
+    flex-direction: column;
+    padding-top: 42px;
+    align-items: center;
+  }
+  .profile__content {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .profile__info {
+    max-width: 196px;
+  }
+
+  .profile__name {
+    font-size: 22px;
+    line-height: 26.63px;
+    padding-bottom: 14px;
+  }
+
+  .profile__hobbie {
+    font-size: 14px;
+    line-height: 16.94px;
+    text-align: center;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    padding-top: 5px;
+  }
+
+  .profile__add-button {
+    width: 282px;
+    height: 50px;
+    padding-top: 0;
+    margin-top: 6px;
+    background-image: url("../images/Profile/Add_Button_320.svg");
+    object-fit: cover;
+  }
+
+  .profile__add-button-img {
+    display: none;
   }
 }
