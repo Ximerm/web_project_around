@@ -54,101 +54,26 @@
           </button>
         </section>
 
-        <section class="elements">
-          <div class="elements__element">
-            <img
-              class="elements__photo"
-              src="./images/Places/Cocha.jpeg"
-              alt="La Cocha"
-            />
-            <div class="elements__info">
-              <h2 class="elements__photo-name">La Cocha</h2>
-              <img
-                class="elements__photo-like"
-                src="./images/Places/Like_Vector.svg"
-                alt="Ícono 'Me gusta'"
-              />
-            </div>
-          </div>
-
-          <div class="elements__element">
-            <img
-              class="elements__photo"
-              src="./images/Places/Casa_Mila.jpg"
-              alt="Casa Mila"
-            />
-            <div class="elements__info">
-              <h2 class="elements__photo-name">Casa Mila</h2>
-              <img
-                class="elements__photo-like"
-                src="./images/Places/Like_Vector.svg"
-                alt="Ícono 'Me gusta'"
-              />
-            </div>
-          </div>
-
-          <div class="elements__element">
-            <img
-              class="elements__photo"
-              src="./images/Places/Granada.jpeg"
-              alt="Granada"
-            />
-            <div class="elements__info">
-              <h2 class="elements__photo-name">Granada</h2>
-              <img
-                class="elements__photo-like"
-                src="./images/Places/Like_Vector.svg"
-                alt="Ícono 'Me gusta'"
-              />
-            </div>
-          </div>
-
-          <div class="elements__element">
-            <img
-              class="elements__photo"
-              src="./images/Places/Jaipur.jpg"
-              alt="Jaipur"
-            />
-            <div class="elements__info">
-              <h2 class="elements__photo-name">Jaipur</h2>
-              <img
-                class="elements__photo-like"
-                src="./images/Places/Like_Vector.svg"
-                alt="Ícono 'Me gusta'"
-              />
-            </div>
-          </div>
-
-          <div class="elements__element">
-            <img
-              class="elements__photo"
-              src="./images/Places/Kubuswoning.jpg"
-              alt="Kubuswoning"
-            />
-            <div class="elements__info">
-              <h2 class="elements__photo-name">Kubuswoning</h2>
-              <img
-                class="elements__photo-like"
-                src="./images/Places/Like_Vector.svg"
-                alt="Ícono 'Me gusta'"
-              />
-            </div>
-          </div>
-
-          <div class="elements__element">
-            <img
-              class="elements__photo"
-              src="./images/Places/SagradaFamilia.jpg"
-              alt="Sagrada_Familia"
-            />
-            <div class="elements__info">
-              <h2 class="elements__photo-name">Sagrada Familia</h2>
-              <img
-                class="elements__photo-like"
-                src="./images/Places/Like_Vector.svg"
-                alt="Ícono 'Me gusta'"
-              />
-            </div>
+        <section class="card">
+          <div class="card__element">
+            <template id="card-template">
+              <div class="card__content">
+                <img
+                  class="card__photo-delete"
+                  src="./images/Places/Trash_Vector.svg"
+                  alt="Ícono eliminar"
+                />
+                <img class="card__photo" alt="Foto de referencia" />
+                <div class="card__info">
+                  <h2 class="card__photo-name"></h2>
+                  <img
+                    class="card__photo-like"
+                    src="./images/Places/Like_Vector.svg"
+                    alt="Ícono 'Me gusta'"
+                  />
+                </div>
+              </div>
+            </template>
           </div>
         </section>
       </main>
@@ -166,34 +91,43 @@
           alt="Ícono cerrar formulario"
         />
         <form class="popup__form">
-          <h2 class="popup__form-title">Editar perfil</h2>
+          <h2 class="popup__form-title"></h2>
           <input
             class="popup__form-input"
             type="text"
-            id="inputName"
-            name="name"
-            placeholder="Nombre"
+            name="first"
+            id="inputFirst"
             autocomplete="off"
             required
           />
           <input
             class="popup__form-input"
             type="text"
-            name="job"
-            id="inputJob"
-            placeholder="Acerca de mí"
+            name="Second"
+            id="inputSecond"
             required
           />
           <button
             type="submit"
             class="popup__form-submit popup__form-submit_action_disable"
             id="submitBtn"
-          >
-            Guardar
-          </button>
+          ></button>
         </form>
       </div>
     </section>
+
+    <section class="popup" id="popup-big-card">
+      <img
+        class="popup__close-big-card"
+        src="./images/Popup/Close_Icon.svg"
+        alt="Icono cerrar imagen"
+      />
+      <div class="popup__big-card">
+        <img class="popup__image-card" alt="Foto de referencia" />
+        <p class="popup__image-title"></p>
+      </div>
+    </section>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
