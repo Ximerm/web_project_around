@@ -56,6 +56,7 @@ initialCards.forEach((card) => {
 const toggleOpenBigImage = (card) => {
   bigCard.classList.toggle("popup_opened");
   bigImageCard.src = card.link;
+  bigImageCard.alt = card.name;
   bigImageName.textContent = card.name;
 };
 
@@ -63,6 +64,7 @@ function createCard(card) {
   let cardElm = cardTemplate.querySelector(".card__content").cloneNode(true);
 
   cardElm.querySelector(".card__photo").src = card.link;
+  cardElm.querySelector(".card__photo").alt = card.name;
   cardElm.querySelector(".card__photo-name").textContent = card.name;
 
   bigImageName.textContent = card.name;
