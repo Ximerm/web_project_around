@@ -15,6 +15,11 @@ const secondInput = document.querySelector("#inputSecond");
 
 const formElement = document.querySelector(".popup__form");
 
+const bigCard = document.querySelector("#popup-big-card");
+const bigImageCard = document.querySelector(".popup__image-card");
+const bigImageName = document.querySelector(".popup__image-title");
+const closeBigImage = document.querySelector(".popup__close_big-card");
+
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -48,13 +53,41 @@ initialCards.forEach((card) => {
   cardsContainer.prepend(cardTemplate);
 });
 
+const toggleOpenBigImage = (card) => {
+  bigCard.classList.toggle("popup_opened");
+  bigImageCard.src = card.link;
+  bigImageName.textContent = card.name;
+};
+
 function createCard(card) {
   let cardElm = cardTemplate.querySelector(".card__content").cloneNode(true);
 
   cardElm.querySelector(".card__photo").src = card.link;
   cardElm.querySelector(".card__photo-name").textContent = card.name;
 
+  bigImageName.textContent = card.name;
+
+  trashButton(cardElm);
+  toggleLikeButton(cardElm);
+
+  const image = cardElm.querySelector(".card__photo");
+  image.addEventListener("click", () => toggleOpenBigImage(card));
+
   return cardElm;
+}
+
+function trashButton(card) {
+  let trashButton = card.querySelector(".card__photo-delete");
+  trashButton.addEventListener("click", function () {
+    card.remove();
+  });
+}
+
+function toggleLikeButton(card) {
+  let likeButton = card.querySelector(".card__photo-like");
+  likeButton.addEventListener("click", function () {
+    likeButton.classList.toggle("card__photo-like_active");
+  });
 }
 
 //Abrir, cerrar y enviar Popup
@@ -80,13 +113,24 @@ function openEditAddPopup(evt) {
   popup.classList.add("popup_opened");
 }
 
-function closeEditPopup(evt) {
+function closePopup(evt) {
+  const className = evt.currentTarget.className;
+
+  switch (className) {
+    case "popup-close":
+      break;
+    case "bigimage-close":
+      break;
+  }
   popup.classList.remove("popup_opened");
+  bigCard.classList.remove("popup_opened");
 }
 
 function FormSubmit(evt) {
   evt.preventDefault();
-  const buttonText = evt.currentTarget.innerText;
+  const buttonText = evt.currentTarget.querySelector(
+    ".popup__form-submit"
+  ).innerText;
 
   switch (buttonText) {
     case "Guardar":
@@ -109,5 +153,6 @@ function FormSubmit(evt) {
 
 editButton.addEventListener("click", openEditAddPopup);
 addButton.addEventListener("click", openEditAddPopup);
-closePopupButton.addEventListener("click", closeEditPopup);
+closePopupButton.addEventListener("click", closePopup);
+closeBigImage.addEventListener("click", closePopup);
 formElement.addEventListener("submit", FormSubmit);
