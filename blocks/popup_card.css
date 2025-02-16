@@ -12,16 +12,9 @@
 }
 
 .popup__close_big-card {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
   padding-bottom: 9px;
-  align-self: flex-end;
 }
 
-.popup__close_big-card:hover {
-  opacity: 60%;
-}
 .popup__big-card-content {
   max-width: 816px;
   max-height: 564.52px;
