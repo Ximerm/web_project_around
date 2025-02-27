@@ -48,8 +48,10 @@
 }
 
 @media (min-width: 320px) and (max-width: 500px) {
-  .popup__close_big-card {
+  .popup__close-btn-image {
     width: 30px;
     height: 30px;
+    bottom: 5px;
+    left: 25px;
   }
 }

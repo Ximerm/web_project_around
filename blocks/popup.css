@@ -144,16 +144,12 @@
     padding-bottom: 70px;
   }
 
-  .popup__form-input {
-    margin-bottom: 30px;
-  }
-
   .popup__form-submit {
     height: 46px;
     width: 100%;
     font-size: 14px;
     line-height: 16.94px;
-    margin-top: 16px;
+    margin-top: 46px;
     padding-left: 0;
   }
 }
