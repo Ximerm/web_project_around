@@ -13,6 +13,18 @@
 
 .popup__close_big-card {
   padding-bottom: 9px;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  position: relative;
+}
+
+.popup__close-btn-image {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 9px;
+  left: 45px;
 }
 
 .popup__big-card-content {

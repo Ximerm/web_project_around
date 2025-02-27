@@ -29,6 +29,7 @@
   height: 40px;
   cursor: pointer;
   align-self: flex-end;
+  background-color: transparent;
 }
 
 .popup__close:hover {
@@ -60,13 +61,39 @@
   line-height: 16.94px;
   border: 0;
   border-bottom: 1px solid #000000;
-  margin-bottom: 29.74px;
+  margin-top: 29px;
   padding: 0;
-  padding-bottom: 9.322px;
+  padding-bottom: 9px;
+}
+
+.popup__form-input:first-of-type {
+  margin-top: 0;
 }
 
 .popup__form-input::placeholder {
   color: #c4c4c4;
+}
+
+.popup__form-input:focus {
+  outline: none;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+}
+
+.popup__form-input:invalid {
+  border-bottom: 1px solid #ff0000;
+}
+
+.input-error {
+  color: #ff0000;
+  font-size: 12px;
+  line-height: 14.52px;
+  display: block;
+  padding-top: 9px;
+}
+
+.popup__form-input_type_error {
+  border-bottom: 1px solid #ff0000;
 }
 
 .popup__form-submit {
@@ -74,7 +101,7 @@
   height: 50.15px;
   padding: 0;
   padding-left: 1px;
-  margin-top: 18.26px;
+  margin-top: 48px;
   font-size: 18px;
   line-height: 21.78px;
   color: #ffffff;
@@ -92,7 +119,7 @@
   background-color: #ffffff;
   border: 1px solid #c4c4c4;
   color: #c4c4c4;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 @media (min-width: 320px) and (max-width: 500px) {
