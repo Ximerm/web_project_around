@@ -48,12 +48,18 @@
   cursor: pointer;
   box-sizing: content-box;
   display: block;
+  outline: none;
 }
 
 .profile__edit-button:hover {
   opacity: 60%;
 }
 
+.profile__edit-button:focus,
+.profile__edit-button:focus-within {
+  outline: none;
+  border: none;
+}
 .profile__edit-button-img {
   width: 100%;
 }
@@ -66,10 +72,17 @@
   padding: 13px 0 0;
   cursor: pointer;
   box-sizing: content-box;
+  outline: none;
 }
 
 .profile__add-button:hover {
   opacity: 60%;
+}
+
+.profile__add-button:focus,
+.profile__add-button:focus-within {
+  outline: none;
+  border: none;
 }
 
 .profile__add-button-img {
