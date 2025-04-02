@@ -1,29 +1,29 @@
-//Variables
+import Card from "./Card.js";
+
+//Variables edición de perfil
 const editButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__hobbie");
-const addButton = document.querySelector(".profile__add-button");
-
-const cardsContainer = document.querySelector(".card__element");
-const cardTemplate = document.querySelector("#card-template").content;
-
-const closePopupButton = document.querySelectorAll(".popup__close");
 const nameInput = document.querySelector("#input-name");
 const aboutInput = document.querySelector("#input-about");
+
+//Variables añadir tarjeta
+const addButton = document.querySelector(".profile__add-button");
+const cardsContainer = document.querySelector(".card__element");
 const titleInput = document.querySelector("#input-title");
 const linkInput = document.querySelector("#input-link");
 
-const formElement = document.querySelector(".popup__form");
+//Variables Popup
+const closePopupButton = document.querySelectorAll(".popup__close");
+
+//Variables formularios
 const profileForm = document.querySelector("#form-profile");
 const cardForm = document.querySelector("#form-addCard");
 
+//Variables agrandar tarjeta
 const bigCard = document.querySelector("#popup-big-card");
 const bigImageCard = document.querySelector(".popup__image-card");
 const bigImageName = document.querySelector(".popup__image-title");
-const closeBigImage = document.querySelector(".popup__close_big-card");
-
-const inputSelector = document.querySelector(".popup__form-input");
-const buttonElement = document.querySelector(".popup__form-submit");
 
 //Tarjetas iniciales
 const initialCards = [
@@ -76,7 +76,7 @@ function editProfile() {
   aboutInput.value = profileAbout.textContent;
 }
 
-//Abrir añadir card
+//Abrir añadir tarjeta
 function addCard() {
   openPopup("popup-add-card");
 }
@@ -109,14 +109,19 @@ function saveProfile() {
   aboutInput.value = "";
 }
 
-//Añadir nueva card
+//Añadir nueva tarjeta
 function saveCard() {
   const card = {
     name: titleInput.value,
     link: linkInput.value,
   };
-  let cardElem = createCard(card);
-  cardsContainer.prepend(cardElem);
+
+  let cardTemplate = new Card(card.name, card.link, "#card-template");
+  let cardElement = cardTemplate.renderCard();
+  cardsContainer.prepend(cardElement);
+
+  titleInput.value = " ";
+  linkInput.value = " ";
 }
 
 //Cerrar con click en la superposición
@@ -167,4 +172,5 @@ export {
   cardForm,
   EscCloseHandler,
   formSettings,
+  saveCard,
 };

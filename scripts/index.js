@@ -15,15 +15,16 @@ import {
   cardForm,
   EscCloseHandler,
   formSettings,
+  saveCard,
 } from "./utils.js";
 
-//Crear carta
+//Añadir tarjetas iniciales al contenedor
 initialCards.forEach((card) => {
   let cardTemplate = new Card(card.name, card.link, "#card-template");
   cardsContainer.prepend(cardTemplate.renderCard());
 });
 
-//Invocación Cierre Popup
+//LLamado Cierre Popup
 closePopupButton.forEach((button) => {
   button.addEventListener("click", () => {
     const popup = button.closest(".popup");
@@ -31,7 +32,7 @@ closePopupButton.forEach((button) => {
   });
 });
 
-//Invocación EvenListeners
+//LLamdo EvenListeners
 setPopupEventListeners();
 
 editButton.addEventListener("click", editProfile);
