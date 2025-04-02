@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 import {
   cardsContainer,
   initialCards,
@@ -15,7 +16,6 @@ import {
   EscCloseHandler,
   formSettings,
 } from "./utils.js";
-import FormValidator from "./FormValidator.js";
 
 //Crear carta
 initialCards.forEach((card) => {

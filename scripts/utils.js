@@ -1,21 +1,21 @@
 //Variables
-export const editButton = document.querySelector(".profile__edit-button");
+const editButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__hobbie");
-export const addButton = document.querySelector(".profile__add-button");
+const addButton = document.querySelector(".profile__add-button");
 
-export const cardsContainer = document.querySelector(".card__element");
+const cardsContainer = document.querySelector(".card__element");
 const cardTemplate = document.querySelector("#card-template").content;
 
-export const closePopupButton = document.querySelectorAll(".popup__close");
+const closePopupButton = document.querySelectorAll(".popup__close");
 const nameInput = document.querySelector("#input-name");
 const aboutInput = document.querySelector("#input-about");
 const titleInput = document.querySelector("#input-title");
 const linkInput = document.querySelector("#input-link");
 
 const formElement = document.querySelector(".popup__form");
-export const profileForm = document.querySelector("#form-profile");
-export const cardForm = document.querySelector("#form-addCard");
+const profileForm = document.querySelector("#form-profile");
+const cardForm = document.querySelector("#form-addCard");
 
 const bigCard = document.querySelector("#popup-big-card");
 const bigImageCard = document.querySelector(".popup__image-card");
@@ -26,7 +26,7 @@ const inputSelector = document.querySelector(".popup__form-input");
 const buttonElement = document.querySelector(".popup__form-submit");
 
 //Tarjetas iniciales
-export const initialCards = [
+const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -54,7 +54,7 @@ export const initialCards = [
 ];
 
 //Agrandar imagen
-export const toggleOpenBigImage = (name, link) => {
+const toggleOpenBigImage = (name, link) => {
   bigCard.classList.toggle("popup_opened");
   bigImageCard.src = link;
   bigImageCard.alt = name;
@@ -70,26 +70,26 @@ function openPopup(popupId) {
 }
 
 //Abrir edición perfil
-export function editProfile() {
+function editProfile() {
   openPopup("popup-edit");
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
 }
 
 //Abrir añadir card
-export function addCard() {
+function addCard() {
   openPopup("popup-add-card");
 }
 
 //Cerrar Popup
-export function closePopup(popup) {
+function closePopup(popup) {
   if (popup) {
     popup.classList.remove("popup_opened");
   }
 }
 
 //Enviar Formulario
-export function formSubmit(evt) {
+function formSubmit(evt) {
   evt.preventDefault();
   const form = evt.currentTarget;
   if (form.id === "form-profile") {
@@ -120,7 +120,7 @@ function saveCard() {
 }
 
 //Cerrar con click en la superposición
-export const setPopupEventListeners = () => {
+const setPopupEventListeners = () => {
   const popupList = Array.from(document.querySelectorAll(".popup"));
   popupList.forEach((popup) => {
     // Cerrar cualquier formulario abierto al dar click en la superposición
@@ -134,18 +134,37 @@ export const setPopupEventListeners = () => {
 };
 
 //Cerrar con tecla Escape
-export function EscCloseHandler(evt) {
+function EscCloseHandler(evt) {
   const popup = document.querySelector(".popup_opened");
   if (evt.key === "Escape" && popup) {
     closePopup(popup);
   }
 }
 
-export const formSettings = {
+//Definir formSettings para validación de formularios
+const formSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__form-input",
   submitButtonSelector: ".popup__form-submit",
   inactiveButtonClass: "popup__form-submit_disable",
   inputErrorClass: "popup__form-input_type_error",
   errorClass: "input-error",
+};
+
+export {
+  toggleOpenBigImage,
+  cardsContainer,
+  initialCards,
+  closePopupButton,
+  closePopup,
+  setPopupEventListeners,
+  editButton,
+  editProfile,
+  addButton,
+  addCard,
+  profileForm,
+  formSubmit,
+  cardForm,
+  EscCloseHandler,
+  formSettings,
 };
