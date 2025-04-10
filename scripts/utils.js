@@ -124,28 +124,6 @@ function saveCard() {
   linkInput.value = " ";
 }
 
-//Cerrar con click en la superposición
-const setPopupEventListeners = () => {
-  const popupList = Array.from(document.querySelectorAll(".popup"));
-  popupList.forEach((popup) => {
-    // Cerrar cualquier formulario abierto al dar click en la superposición
-    popup.addEventListener("click", function (evt) {
-      // Verificar si el click ocurrió fuera de la ventana modal y en el popup
-      if (evt.target === popup) {
-        closePopup(popup);
-      }
-    });
-  });
-};
-
-//Cerrar con tecla Escape
-function EscCloseHandler(evt) {
-  const popup = document.querySelector(".popup_opened");
-  if (evt.key === "Escape" && popup) {
-    closePopup(popup);
-  }
-}
-
 //Definir formSettings para validación de formularios
 const formSettings = {
   formSelector: ".popup__form",
