@@ -8,22 +8,14 @@ const nameInput = document.querySelector("#input-name");
 const aboutInput = document.querySelector("#input-about");
 
 //Variables añadir tarjeta
-const addButton = document.querySelector(".profile__add-button");
+export const addButton = document.querySelector(".profile__add-button");
 export const cardsContainer = document.querySelector(".card__element");
 const titleInput = document.querySelector("#input-title");
 const linkInput = document.querySelector("#input-link");
 
-//Variables Popup
-const closePopupButton = document.querySelectorAll(".popup__close");
-
 //Variables formularios
-const profileForm = document.querySelector("#form-profile");
-const cardForm = document.querySelector("#form-addCard");
-
-//Variables agrandar tarjeta
-const bigCard = document.querySelector("#popup-big-card");
-const bigImageCard = document.querySelector(".popup__image-card");
-const bigImageName = document.querySelector(".popup__image-title");
+export const profileForm = document.querySelector("#form-profile");
+export const cardForm = document.querySelector("#form-addCard");
 
 //Tarjetas iniciales
 export const initialCards = [
@@ -53,27 +45,8 @@ export const initialCards = [
   },
 ];
 
-//Abrir edición perfil
-function editProfile() {
-  openPopup("popup-edit");
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
-}
-
-//Abrir añadir tarjeta
-function addCard() {
-  openPopup("popup-add-card");
-}
-
-//Cerrar Popup
-function closePopup(popup) {
-  if (popup) {
-    popup.classList.remove("popup_opened");
-  }
-}
-
 //Enviar Formulario
-function formSubmit(evt) {
+export function formSubmit(evt) {
   evt.preventDefault();
   const form = evt.currentTarget;
   if (form.id === "form-profile") {
@@ -94,7 +67,7 @@ export function saveProfile(name, about) {
 }
 
 //Añadir nueva tarjeta
-function saveCard() {
+export function saveCard() {
   const card = {
     name: titleInput.value,
     link: linkInput.value,
@@ -109,22 +82,11 @@ function saveCard() {
 }
 
 //Definir formSettings para validación de formularios
-const formSettings = {
+export const formSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__form-input",
   submitButtonSelector: ".popup__form-submit",
   inactiveButtonClass: "popup__form-submit_disable",
   inputErrorClass: "popup__form-input_type_error",
   errorClass: "input-error",
-};
-
-export {
-  editProfile,
-  addButton,
-  addCard,
-  profileForm,
-  formSubmit,
-  cardForm,
-  formSettings,
-  saveCard,
 };

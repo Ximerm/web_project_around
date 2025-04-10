@@ -2,6 +2,7 @@ export default class Popup {
   constructor(selector) {
     this._selector = selector;
     this._element = document.querySelector(this._selector);
+    this._handleEscCloseAux = this._handleEscClose.bind(this);
   }
 
   //Método público para agregar los detectores de eventos
@@ -14,7 +15,7 @@ export default class Popup {
       });
 
     //Cerrar al hacer click en el área sombreada
-    this._element.addEvenListener("click", (evt) => {
+    this._element.addEvenListener("mousedown", (evt) => {
       if (evt.target === this._element) {
         this.close();
       }
@@ -31,12 +32,12 @@ export default class Popup {
   //Método público para abrir Popup
   open() {
     this._element.classList.add("popup_opened");
-    document.addEventListener("keydown", this._handleEscClose);
+    document.addEventListener("keydown", this._handleEscCloseAux);
   }
 
   //Método público para cerrar Popup
   close() {
     this._element.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._handleEscClose);
+    document.removeEventListener("keydown", this._handleEscCloseAux);
   }
 }

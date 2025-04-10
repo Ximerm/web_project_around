@@ -1,17 +1,17 @@
 import Card from "./Card.js";
 import PopupWithForm from "./PopupWithForm.js";
 import PopupWithImage from "./PopUpWithImage.js";
+import Section from "./Section.js";
+import UserInfo from "./UserInfo.js";
 import FormValidator from "./FormValidator.js";
 import {
+  editButton,
+  addButton,
   cardsContainer,
   initialCards,
-  editButton,
-  editProfile,
-  addButton,
-  addCard,
   profileForm,
-  formSubmit,
   cardForm,
+  formSubmit,
   formSettings,
   saveCard,
   saveProfile,
