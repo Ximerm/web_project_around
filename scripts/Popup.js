@@ -1,7 +1,7 @@
 export default class Popup {
   constructor(selector) {
     this._selector = selector;
-    this_element = document.querySelector(this._selector);
+    this._element = document.querySelector(this._selector);
   }
 
   //Método público para agregar los detectores de eventos
@@ -21,7 +21,7 @@ export default class Popup {
   }
 
   //Método privado para cerrar con Esc
-  _handleEscClose() {
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this._close();
     }

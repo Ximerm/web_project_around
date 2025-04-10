@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 
 //Variables edición de perfil
-const editButton = document.querySelector(".profile__edit-button");
+export const editButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__hobbie");
 const nameInput = document.querySelector("#input-name");
@@ -102,9 +102,9 @@ function formSubmit(evt) {
 }
 
 //Guardar edición perfil
-function saveProfile() {
-  profileName.textContent = nameInput.value;
-  profileAbout.textContent = aboutInput.value;
+export function saveProfile(name, about) {
+  profileName.textContent = name;
+  profileAbout.textContent = about;
   nameInput.value = "";
   aboutInput.value = "";
 }
@@ -138,17 +138,12 @@ export {
   toggleOpenBigImage,
   cardsContainer,
   initialCards,
-  closePopupButton,
-  closePopup,
-  setPopupEventListeners,
-  editButton,
   editProfile,
   addButton,
   addCard,
   profileForm,
   formSubmit,
   cardForm,
-  EscCloseHandler,
   formSettings,
   saveCard,
 };
