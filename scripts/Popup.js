@@ -12,6 +12,7 @@ export default class Popup {
       .addEvenListener("click", () => {
         this.close();
       });
+
     //Cerrar al hacer click en el área sombreada
     this._element.addEvenListener("click", (evt) => {
       if (evt.target === this._element) {
@@ -23,7 +24,7 @@ export default class Popup {
   //Método privado para cerrar con Esc
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      this._close();
+      this.close();
     }
   }
 

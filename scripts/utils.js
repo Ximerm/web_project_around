@@ -9,7 +9,7 @@ const aboutInput = document.querySelector("#input-about");
 
 //Variables añadir tarjeta
 const addButton = document.querySelector(".profile__add-button");
-const cardsContainer = document.querySelector(".card__element");
+export const cardsContainer = document.querySelector(".card__element");
 const titleInput = document.querySelector("#input-title");
 const linkInput = document.querySelector("#input-link");
 
@@ -26,7 +26,7 @@ const bigImageCard = document.querySelector(".popup__image-card");
 const bigImageName = document.querySelector(".popup__image-title");
 
 //Tarjetas iniciales
-const initialCards = [
+export const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -52,22 +52,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
-
-//Agrandar imagen
-const toggleOpenBigImage = (name, link) => {
-  bigCard.classList.toggle("popup_opened");
-  bigImageCard.src = link;
-  bigImageCard.alt = name;
-  bigImageName.textContent = name;
-};
-
-//Abrir Popup general
-function openPopup(popupId) {
-  const popup = document.getElementById(popupId);
-  if (popup) {
-    popup.classList.add("popup_opened");
-  }
-}
 
 //Abrir edición perfil
 function editProfile() {
@@ -135,9 +119,6 @@ const formSettings = {
 };
 
 export {
-  toggleOpenBigImage,
-  cardsContainer,
-  initialCards,
   editProfile,
   addButton,
   addCard,

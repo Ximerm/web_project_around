@@ -1,9 +1,9 @@
-import { toggleOpenBigImage } from "./utils.js";
 export default class Card {
-  constructor(name, link, templateSelector) {
+  constructor(name, link, templateSelector, _handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = this._handleCardClick;
   }
 
   _getTemplate() {
@@ -21,7 +21,7 @@ export default class Card {
     this._trashButton();
     const image = this._element.querySelector(".card__photo");
     image.addEventListener("click", () =>
-      toggleOpenBigImage(this._name, this._link)
+      this._handleCardClick(this._name, this._link)
     );
   }
 
