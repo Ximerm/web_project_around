@@ -9,7 +9,6 @@ import {
   aboutInput,
   editButton,
   addButton,
-  cardsContainer,
   initialCards,
   profileForm,
   cardForm,
@@ -18,18 +17,28 @@ import {
   saveProfile,
 } from "../components/utils.js";
 
-//Añadir tarjetas iniciales al contenedor
-initialCards.forEach((card) => {
-  let cardTemplate = new Card(
-    card.name,
-    card.link,
-    "#card-template",
-    (name, link) => {
-      popupImage.open(name, link);
-    }
-  );
-  cardsContainer.prepend(cardTemplate.renderCard());
-});
+// Función para crear una nueva tarjeta
+function createCard(name, link) {
+  const card = new Card(name, link, "#card-template", (name, link) => {
+    popupImage.open(name, link);
+  });
+  return card.renderCard();
+}
+
+// Crear instancia de Section para manejar las tarjetas
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardElement = createCard(item.name, item.link);
+      cardSection.addItem(cardElement);
+    },
+  },
+  ".card__element"
+);
+
+// Renderizar tarjetas iniciales
+cardSection.renderItems();
 
 //Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
 const userInfo = new UserInfo({
@@ -68,8 +77,11 @@ const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
 popupProfile.setEventListeners();
 
 //Instancia para Popup Agregar card
-const popupAddCard = new PopupWithForm("#popup-add-card", (inputValues) => {
-  saveCard(inputValues.title, inputValues.link);
+const popupAddCard = new PopupWithForm("#popup-add-card", () => {
+  saveCard((name, link) => {
+    const cardElement = createCard(name, link);
+    cardSection.addItem(cardElement);
+  });
   popupAddCard.close();
 });
 popupAddCard.setEventListeners();
