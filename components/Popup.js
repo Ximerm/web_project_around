@@ -8,7 +8,6 @@ export default class Popup {
   //Método público para agregar los detectores de eventos
   setEventListeners() {
     //Cerrar al hacer click en el ícono para cerrar popup
-    console.log(this._element);
     this._element
       .querySelector(".popup__close")
       .addEventListener("click", () => {

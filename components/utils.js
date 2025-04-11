@@ -1,11 +1,7 @@
-import Card from "./Card.js";
-
 //Variables edición de perfil
+export const nameInput = document.querySelector("#input-name");
+export const aboutInput = document.querySelector("#input-about");
 export const editButton = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector(".profile__name");
-const profileAbout = document.querySelector(".profile__hobbie");
-const nameInput = document.querySelector("#input-name");
-const aboutInput = document.querySelector("#input-about");
 
 //Variables añadir tarjeta
 export const addButton = document.querySelector(".profile__add-button");
@@ -45,24 +41,11 @@ export const initialCards = [
   },
 ];
 
-//Enviar Formulario
-export function formSubmit(evt) {
-  evt.preventDefault();
-  const form = evt.currentTarget;
-  if (form.id === "form-profile") {
-    saveProfile();
-  } else if (form.id === "form-addCard") {
-    saveCard();
-  }
-
-  closePopup(form.closest(".popup"));
-}
-
 //Guardar edición perfil
-export function saveProfile(name, about) {
-  // instancia .set
-  profileName.textContent = name;
-  profileAbout.textContent = about;
+export function saveProfile(name, about, updateUserInfo) {
+  if (updateUserInfo) {
+    updateUserInfo(name, about);
+  }
 }
 
 //Añadir nueva tarjeta

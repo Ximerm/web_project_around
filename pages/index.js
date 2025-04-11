@@ -5,13 +5,14 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import {
+  nameInput,
+  aboutInput,
   editButton,
   addButton,
   cardsContainer,
   initialCards,
   profileForm,
   cardForm,
-  formSubmit,
   formSettings,
   saveCard,
   saveProfile,
@@ -30,10 +31,18 @@ initialCards.forEach((card) => {
   cardsContainer.prepend(cardTemplate.renderCard());
 });
 
-//Abrir formulario Edición perfil
+//Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  aboutSelector: ".profile__hobbie",
+});
+
+// Abrir formulario Edición perfil con la información actual cargada
 editButton.addEventListener("click", () => {
+  const userInfoData = userInfo.getUserInfo();
+  nameInput.value = userInfoData.name;
+  aboutInput.value = userInfoData.about;
   popupProfile.open();
-  //get user info
 });
 
 //Abrir formulario Agregar Card
@@ -51,11 +60,11 @@ formValidatorAddCard.enableValidation();
 
 //Instancia para Popup Edición Perfil
 const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
-  console.log(inputValues);
-  saveProfile(inputValues.name, inputValues.about);
+  saveProfile(inputValues.name, inputValues.about, (name, about) => {
+    userInfo.setUserInfo({ name, about });
+  });
   popupProfile.close();
 });
-
 popupProfile.setEventListeners();
 
 //Instancia para Popup Agregar card
@@ -63,7 +72,6 @@ const popupAddCard = new PopupWithForm("#popup-add-card", (inputValues) => {
   saveCard(inputValues.title, inputValues.link);
   popupAddCard.close();
 });
-
 popupAddCard.setEventListeners();
 
 //Instancia para Agrandar imagen
