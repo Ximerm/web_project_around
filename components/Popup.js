@@ -6,16 +6,17 @@ export default class Popup {
   }
 
   //Método público para agregar los detectores de eventos
-  setEvenListenes() {
+  setEventListeners() {
     //Cerrar al hacer click en el ícono para cerrar popup
+    console.log(this._element);
     this._element
       .querySelector(".popup__close")
-      .addEvenListener("click", () => {
+      .addEventListener("click", () => {
         this.close();
       });
 
     //Cerrar al hacer click en el área sombreada
-    this._element.addEvenListener("mousedown", (evt) => {
+    this._element.addEventListener("mousedown", (evt) => {
       if (evt.target === this._element) {
         this.close();
       }

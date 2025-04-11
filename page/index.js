@@ -1,9 +1,9 @@
-import Card from "./Card.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopUpWithImage.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
-import FormValidator from "./FormValidator.js";
+import Card from "../components/Card.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopUpWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
 import {
   editButton,
   addButton,
@@ -15,7 +15,7 @@ import {
   formSettings,
   saveCard,
   saveProfile,
-} from "./utils.js";
+} from "../components/utils.js";
 
 //Añadir tarjetas iniciales al contenedor
 initialCards.forEach((card) => {
@@ -33,6 +33,7 @@ initialCards.forEach((card) => {
 //Abrir formulario Edición perfil
 editButton.addEventListener("click", () => {
   popupProfile.open();
+  //get user info
 });
 
 //Abrir formulario Agregar Card
@@ -50,9 +51,12 @@ formValidatorAddCard.enableValidation();
 
 //Instancia para Popup Edición Perfil
 const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
+  console.log(inputValues);
   saveProfile(inputValues.name, inputValues.about);
   popupProfile.close();
 });
+
+popupProfile.setEventListeners();
 
 //Instancia para Popup Agregar card
 const popupAddCard = new PopupWithForm("#popup-add-card", (inputValues) => {
@@ -60,5 +64,8 @@ const popupAddCard = new PopupWithForm("#popup-add-card", (inputValues) => {
   popupAddCard.close();
 });
 
+popupAddCard.setEventListeners();
+
 //Instancia para Agrandar imagen
 const popupImage = new PopupWithImage("#popup-big-card");
+popupImage.setEventListeners();

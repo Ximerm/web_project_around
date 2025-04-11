@@ -60,10 +60,9 @@ export function formSubmit(evt) {
 
 //Guardar edición perfil
 export function saveProfile(name, about) {
+  // instancia .set
   profileName.textContent = name;
   profileAbout.textContent = about;
-  nameInput.value = "";
-  aboutInput.value = "";
 }
 
 //Añadir nueva tarjeta

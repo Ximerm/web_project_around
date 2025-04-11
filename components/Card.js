@@ -16,7 +16,7 @@ export default class Card {
     this._element.querySelector(".card__photo-name").textContent = this._name;
   }
 
-  _setEvenListeners() {
+  _setEventListeners() {
     this._toggleLikeButton();
     this._trashButton();
     const image = this._element.querySelector(".card__photo");
@@ -41,7 +41,7 @@ export default class Card {
 
   renderCard() {
     this._getTemplate();
-    this._setEvenListeners();
+    this._setEventListeners();
     return this._element;
   }
 }
