@@ -9,5 +9,6 @@ HTML5 semántico
 Metodología BEM
 Diseño responsivo
 JavaScript
+Refactorización con POO
 
 Link:https://ximerm.github.io/web_project_around/

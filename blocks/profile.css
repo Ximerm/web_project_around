@@ -79,8 +79,7 @@
   opacity: 60%;
 }
 
-.profile__add-button:focus,
-.profile__add-button:focus-within {
+.profile__add-button:focus {
   outline: none;
   border: none;
 }
