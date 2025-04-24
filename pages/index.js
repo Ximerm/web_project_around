@@ -16,29 +16,42 @@ import {
   saveCard,
   saveProfile,
 } from "../components/utils.js";
+import api from "../components/api.js";
 
 // Función para crear una nueva tarjeta
-function createCard(name, link) {
-  const card = new Card(name, link, "#card-template", (name, link) => {
-    popupImage.open(name, link);
-  });
+function createCard({ name, link, _id, owner }, currentUser) {
+  const card = new Card(
+    { name, link, _id, owner },
+    currentUser,
+    "#card-template",
+    (name, link) => {
+      popupImage.open(name, link);
+    }
+  );
   return card.renderCard();
 }
 
-// Crear instancia de Section para manejar las tarjetas
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item.name, item.link);
-      cardSection.addItem(cardElement);
-    },
-  },
-  ".card__element"
-);
+// Variable vacía para después crear las tarjetas
+let cardSection = null;
 
-// Renderizar tarjetas iniciales
-cardSection.renderItems();
+// Cargar datos del usuario desde la API
+api.getUser().then((user) => {
+  api.getCards().then((cards) => {
+    // Crear instancia de Section para manejar las tarjetas
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          const cardElement = createCard(item, user);
+          cardSection.addItem(cardElement);
+        },
+      },
+      ".card__element"
+    );
+    // Renderizar tarjetas iniciales
+    cardSection.renderItems();
+  });
+});
 
 //Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
 const userInfo = new UserInfo({
