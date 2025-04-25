@@ -1,17 +1,21 @@
 export default class Card {
   constructor(
-    { name, link, _id, owner },
+    { name, link, _id, owner, isLiked },
     currentUser,
     templateSelector,
-    handleCardClick
+    handleCardClick,
+    { handleAddLike, handleRemoveLike }
   ) {
     this._name = name;
     this._link = link;
     this._id = _id;
-    this.owner = owner;
-    this.currentUser = currentUser;
+    this._owner = owner;
+    this._isLiked = isLiked;
+    this._currentUser = currentUser;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleAddLike = handleAddLike;
+    this._handleRemoveLike = handleRemoveLike;
   }
 
   _getTemplate() {
@@ -42,8 +46,23 @@ export default class Card {
 
   _toggleLikeButton() {
     let likeButton = this._element.querySelector(".card__photo-like");
+    //Cargar el like en la tarjeta desde el inicio
+    if (this._isLiked) {
+      likeButton.classList.add("card__photo-like_active");
+    }
+
     likeButton.addEventListener("click", () => {
-      likeButton.classList.toggle("card__photo-like_active");
+      if (!this._isLiked) {
+        this._handleAddLike(this._id).then((card) => {
+          this._isLiked = card.isLiked;
+          likeButton.classList.add("card__photo-like_active");
+        });
+      } else {
+        this._handleRemoveLike(this._id).then((card) => {
+          this._isLiked = card.isLiked;
+          likeButton.classList.remove("card__photo-like_active");
+        });
+      }
     });
   }
 

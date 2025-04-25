@@ -13,8 +13,7 @@
 }
 
 .card__content {
-  max-width: 32.045%;
-  width: 100%;
+  width: 282px;
   height: 361px;
   background-color: white;
   border-radius: 10px;
@@ -81,7 +80,7 @@
 
 @media (min-width: 769px) and (max-width: 950px) {
   .card__content {
-    max-width: 31.75%;
+    width: 230.19px;
     height: 308.24px;
   }
 
@@ -101,8 +100,7 @@
   }
 
   .card__content {
-    max-width: 47.8%;
-    width: 100%;
+    width: 222.27px;
     height: 287.32px;
   }
 

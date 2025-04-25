@@ -24,6 +24,15 @@ class Api {
     return this._makeRequest("/cards", "POST", { name, link });
   }
 
+  // 5.Alternar "me gusta" en una tarjeta
+  addLike(cardId) {
+    return this._makeRequest(`/cards/${cardId}/likes`, "PUT");
+  }
+
+  removeLike(cardId) {
+    return this._makeRequest(`/cards/${cardId}/likes`, "DELETE");
+  }
+
   // Método privado para realizar la conexión con el servidor
   _makeRequest(uri, method = "GET", params = {}) {
     const config = {
@@ -36,10 +45,15 @@ class Api {
     if (method !== "GET") {
       config.body = JSON.stringify(params);
     }
-    return fetch(`${this._url}/${uri}`, config).then((res) => res.json());
+    return fetch(`${this._url}/${uri}`, config).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
   }
 }
 
+// Variable que se exporta para realizar la conexión
 const api = new Api(
   "https://around-api.es.tripleten-services.com/v1",
   "68e1f8c3-3bf9-46aa-93b3-f3486d4dae11"

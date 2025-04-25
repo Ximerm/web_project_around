@@ -19,13 +19,21 @@ import {
 import api from "../components/api.js";
 
 // Función para crear una nueva tarjeta
-function createCard({ name, link, _id, owner }, currentUser) {
+function createCard({ name, link, _id, owner, isLiked }, currentUser) {
   const card = new Card(
-    { name, link, _id, owner },
+    { name, link, _id, owner, isLiked },
     currentUser,
     "#card-template",
     (name, link) => {
       popupImage.open(name, link);
+    },
+    {
+      handleAddLike: (cardId) => {
+        return api.addLike(cardId);
+      },
+      handleRemoveLike: (cardId) => {
+        return api.removeLike(cardId);
+      },
     }
   );
   return card.renderCard();
