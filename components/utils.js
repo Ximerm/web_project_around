@@ -12,7 +12,8 @@ const linkInput = document.querySelector("#input-link");
 export const profileForm = document.querySelector("#form-profile");
 export const cardForm = document.querySelector("#form-addCard");
 
-//Tarjetas iniciales
+/*
+//Tarjetas iniciales, ya no se requieren estáticas
 export const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -39,28 +40,7 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
-
-//Guardar edición perfil
-export function saveProfile(name, about, updateUserInfo) {
-  if (updateUserInfo) {
-    updateUserInfo(name, about);
-  }
-}
-
-//Añadir nueva tarjeta
-export function saveCard(addNewCard) {
-  const cardData = {
-    name: titleInput.value,
-    link: linkInput.value,
-  };
-
-  if (addNewCard) {
-    addNewCard(cardData.name, cardData.link);
-  }
-
-  titleInput.value = "";
-  linkInput.value = "";
-}
+*/
 
 //Definir formSettings para validación de formularios
 export const formSettings = {

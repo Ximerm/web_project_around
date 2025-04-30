@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ nameSelector, aboutSelector }) {
+  constructor({ nameSelector, aboutSelector, avatarSelector }) {
     this._nameElement = document.querySelector(nameSelector);
     this._aboutElement = document.querySelector(aboutSelector);
+    this._avatarElement = document.querySelector(avatarSelector);
   }
 
   // Método público para obtener la información del usuario
@@ -9,6 +10,7 @@ export default class UserInfo {
     return {
       name: this._nameElement.textContent,
       about: this._aboutElement.textContent,
+      avatar: this._avatarElement.src,
     };
   }
 
@@ -16,5 +18,9 @@ export default class UserInfo {
   setUserInfo({ name, about }) {
     this._nameElement.textContent = name;
     this._aboutElement.textContent = about;
+  }
+
+  setUserAvatar(linkAvatar) {
+    this._avatarElement.src = linkAvatar;
   }
 }

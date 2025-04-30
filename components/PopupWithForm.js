@@ -9,10 +9,16 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._form = this._element.querySelector(".popup__form");
+    this._submitButton = this._form.querySelector(".popup__form-submit");
+    this._submitButtonText = this._submitButton.textContent;
     this._form.addEventListener("submit", (event) => {
       event.preventDefault();
       const inputValues = this._getInputValues();
-      this._handleFormSubmit(inputValues);
+      this._toggleLoadingState(true); // Mostrar "Guardando..."
+      this._handleFormSubmit(inputValues)
+        .then(() => this.close()) // Cerrar si la solicitud fue exitosa
+        .catch((err) => console.error("Error al enviar formulario:", err))
+        .finally(() => this._toggleLoadingState(false)); // Restaurar el botón
     });
   }
 
@@ -26,6 +32,15 @@ export default class PopupWithForm extends Popup {
       inputValues[input.name] = input.value;
     });
     return inputValues;
+  }
+
+  // Método privado para cambiar el estado del botón
+  _toggleLoadingState(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = "Guardando...";
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
   }
 
   close() {

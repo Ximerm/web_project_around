@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithImage from "../components/PopUpWithImage.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
@@ -9,14 +10,95 @@ import {
   aboutInput,
   editButton,
   addButton,
-  initialCards,
   profileForm,
   cardForm,
   formSettings,
-  saveCard,
-  saveProfile,
 } from "../components/utils.js";
 import api from "../components/api.js";
+
+//Instancias de clases
+//Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  aboutSelector: ".profile__hobbie",
+  avatarSelector: ".profile__avatar",
+});
+
+// Instancia para Popup Edición Perfil
+const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
+  // Llamar a la API para actualizar el perfil
+  api
+    .updateUser(inputValues.name, inputValues.about)
+    .then((name, about) => {
+      // Actualizar la información del usuario en la interfaz
+      userInfo.setUserInfo({ name, about });
+      popupProfile.close();
+    })
+    .catch((err) => {
+      console.error("Error al actualizar el perfil:", err);
+    });
+});
+popupProfile.setEventListeners();
+
+// Instancia para Popup Agregar card
+const popupAddCard = new PopupWithForm("#popup-add-card", (data) => {
+  console.log("Datos de la tarjeta:", data);
+  // Llamar a la API para agregar una nueva tarjeta
+  return api
+    .addNewCard({ name: data.name, link: data.link })
+    .then((newCard) => {
+      console.log("Tarjeta añadida:", newCard);
+      const cardElement = createCard(newCard);
+      cardSection.addItem(cardElement);
+      popupAddCard.close();
+    })
+    .catch((err) => {
+      console.error("Error al agregar la tarjeta:", err);
+    });
+});
+popupAddCard.setEventListeners();
+
+//Instancia para Agrandar imagen
+const popupImage = new PopupWithImage("#popup-big-card");
+popupImage.setEventListeners();
+
+//Instancia popupConfirmation para usarla al abrir el popup de confirmación de "Borrar tarjeta"
+const popupConfirmation = new PopupWithConfirmation("#popup-delete-card");
+popupConfirmation.setEventListeners();
+
+//Instancia para cambiar de avatar
+const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
+  api
+    .updateUserAvatar(data.avatar)
+    .then((updatedData) => {
+      userInfo.setUserAvatar(data.avatar);
+      avatarPopup.close();
+    })
+    .catch((err) => console.error("Error al actualizar avatar:", err));
+});
+avatarPopup.setEventListeners();
+
+//Cargar datos desde la API
+// Cargar datos del usuario desde la API
+api.getUser().then((user) => {
+  api.getInitialCards().then((cards) => {
+    // Crear instancia de Section para manejar las tarjetas
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          const cardElement = createCard(item, user);
+          cardSection.addItem(cardElement);
+        },
+      },
+      ".card__element"
+    );
+    // Renderizar tarjetas iniciales
+    cardSection.renderItems();
+  });
+});
+
+//Funciones
 
 // Función para crear una nueva tarjeta
 function createCard({ name, link, _id, owner, isLiked }, currentUser) {
@@ -34,6 +116,14 @@ function createCard({ name, link, _id, owner, isLiked }, currentUser) {
       handleRemoveLike: (cardId) => {
         return api.removeLike(cardId);
       },
+      handleRemoveCard(cardId, deleteCard) {
+        popupConfirmation.open(() => {
+          api.removeCard(cardId).then(() => {
+            popupConfirmation.close();
+            deleteCard();
+          });
+        });
+      },
     }
   );
   return card.renderCard();
@@ -41,31 +131,6 @@ function createCard({ name, link, _id, owner, isLiked }, currentUser) {
 
 // Variable vacía para después crear las tarjetas
 let cardSection = null;
-
-// Cargar datos del usuario desde la API
-api.getUser().then((user) => {
-  api.getCards().then((cards) => {
-    // Crear instancia de Section para manejar las tarjetas
-    cardSection = new Section(
-      {
-        items: cards,
-        renderer: (item) => {
-          const cardElement = createCard(item, user);
-          cardSection.addItem(cardElement);
-        },
-      },
-      ".card__element"
-    );
-    // Renderizar tarjetas iniciales
-    cardSection.renderItems();
-  });
-});
-
-//Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  aboutSelector: ".profile__hobbie",
-});
 
 // Abrir formulario Edición perfil con la información actual cargada
 editButton.addEventListener("click", () => {
@@ -87,26 +152,3 @@ formValidatorProfile.enableValidation();
 //Validación formulario añadir card
 const formValidatorAddCard = new FormValidator(cardForm, formSettings);
 formValidatorAddCard.enableValidation();
-
-//Instancia para Popup Edición Perfil
-const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
-  saveProfile(inputValues.name, inputValues.about, (name, about) => {
-    userInfo.setUserInfo({ name, about });
-  });
-  popupProfile.close();
-});
-popupProfile.setEventListeners();
-
-//Instancia para Popup Agregar card
-const popupAddCard = new PopupWithForm("#popup-add-card", () => {
-  saveCard((name, link) => {
-    const cardElement = createCard(name, link);
-    cardSection.addItem(cardElement);
-  });
-  popupAddCard.close();
-});
-popupAddCard.setEventListeners();
-
-//Instancia para Agrandar imagen
-const popupImage = new PopupWithImage("#popup-big-card");
-popupImage.setEventListeners();

@@ -10,21 +10,21 @@ class Api {
   }
 
   // 2. Cargar las tarjetas desde el servidor
-  getCards() {
+  getInitialCards() {
     return this._makeRequest("/cards");
   }
 
   // 3. Editar el perfil
   updateUser(name, about) {
-    return this._makeRequest("/users/me", "PATCH", { about, name });
+    return this._makeRequest("/users/me", "PATCH", { name, about });
   }
 
   // 4. Agregar una nueva tarjeta
-  addNewCar(name, link) {
+  addNewCard(name, link) {
     return this._makeRequest("/cards", "POST", { name, link });
   }
 
-  // 5.Alternar "me gusta" en una tarjeta
+  // 5. Alternar "me gusta" en una tarjeta
   addLike(cardId) {
     return this._makeRequest(`/cards/${cardId}/likes`, "PUT");
   }
@@ -33,8 +33,19 @@ class Api {
     return this._makeRequest(`/cards/${cardId}/likes`, "DELETE");
   }
 
+  // 6. Eliminar tarjeta
+  removeCard(cardId) {
+    return this._makeRequest(`/cards/${cardId}`, "DELETE");
+  }
+
+  // 7.Actualizar foto de perfil
+  updateUserAvatar(avatarUrl) {
+    return this._makeRequest(`users/me/avatar`, "PATCH");
+  }
+
   // Método privado para realizar la conexión con el servidor
   _makeRequest(uri, method = "GET", params = {}) {
+    // Parámetros de configuración generales
     const config = {
       method,
       headers: {

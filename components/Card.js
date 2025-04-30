@@ -4,7 +4,7 @@ export default class Card {
     currentUser,
     templateSelector,
     handleCardClick,
-    { handleAddLike, handleRemoveLike }
+    { handleAddLike, handleRemoveLike, handleRemoveCard }
   ) {
     this._name = name;
     this._link = link;
@@ -16,6 +16,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleAddLike = handleAddLike;
     this._handleRemoveLike = handleRemoveLike;
+    this._handleRemoveCard = handleRemoveCard;
   }
 
   _getTemplate() {
@@ -40,7 +41,9 @@ export default class Card {
   _trashButton() {
     let trashButton = this._element.querySelector(".card__photo-delete");
     trashButton.addEventListener("click", () => {
-      this._element.remove();
+      this._handleRemoveCard(this._id, () => {
+        this._element.remove();
+      });
     });
   }
 
