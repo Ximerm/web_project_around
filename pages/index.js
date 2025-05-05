@@ -57,6 +57,16 @@ const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
 });
 avatarPopup.setEventListeners();
 
+//Instancia para Popup Agregar card
+const popupAddCard = new PopupWithForm("#popup-add-card", () => {
+  saveCard((name, link) => {
+    const cardElement = createCard(name, link);
+    cardSection.addItem(cardElement);
+  });
+  popupAddCard.close();
+});
+popupAddCard.setEventListeners();
+
 //Instancia popupConfirmation para usarla al abrir el popup de confirmación de "Borrar tarjeta"
 const popupConfirmation = new PopupWithConfirmation("#popup-delete-card");
 popupConfirmation.setEventListeners();
@@ -123,16 +133,6 @@ formValidatorProfile.enableValidation();
 //Validación formulario añadir card
 const formValidatorAddCard = new FormValidator(cardForm, formSettings);
 formValidatorAddCard.enableValidation();
-
-//Instancia para Popup Agregar card
-const popupAddCard = new PopupWithForm("#popup-add-card", () => {
-  saveCard((name, link) => {
-    const cardElement = createCard(name, link);
-    cardSection.addItem(cardElement);
-  });
-  popupAddCard.close();
-});
-popupAddCard.setEventListeners();
 
 //Instancia para Agrandar imagen
 const popupImage = new PopupWithImage("#popup-big-card");
