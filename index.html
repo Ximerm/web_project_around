@@ -27,15 +27,20 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="./images/Profile/Avatar_Jacques_Cousteau.jpg"
-            alt="Avatar Jacques Cousteau"
-          />
+          <div class="profile__avatar-container">
+            <img class="profile__avatar" src=" " alt="Avatar" />
+            <button class="profile__edit-avatar">
+              <img
+                src="./images/Profile/Update_Avatar_Icon.svg"
+                alt="Botón para editar Avatar"
+              />
+            </button>
+          </div>
+
           <div class="profile__content">
             <div class="profile__info">
-              <p class="profile__name">Jacques Cousteau</p>
-              <p class="profile__hobbie">Explorador</p>
+              <p class="profile__name"></p>
+              <p class="profile__hobbie"></p>
             </div>
             <button class="profile__edit-button">
               <img
@@ -64,7 +69,7 @@
                   src="./images/Places/Trash_Vector.svg"
                   alt="Ícono eliminar"
                 />
-                <img class="card__photo" alt=" " src=" " />
+                <img class="card__photo" alt="" src="" />
                 <div class="card__info">
                   <h2 class="card__photo-name"></h2>
                   <img
@@ -187,9 +192,54 @@
           />
         </button>
         <div class="popup__big-card-content">
-          <img class="popup__image-card" alt=" " src=" " />
+          <img class="popup__image-card" alt="" src="" />
           <p class="popup__image-title"></p>
         </div>
+      </div>
+    </section>
+
+    <!-- Ventana emergente de eliminar-->
+    <section class="popup" id="popup-delete-card">
+      <div class="popup__container">
+        <img
+          class="popup__close"
+          src="./images/Popup/Close_Icon.svg"
+          alt="Ícono cerrar formulario"
+        />
+        <form class="popup__form" id="form-deleteCard">
+          <h2 class="popup__form-title">¿Estás seguro?</h2>
+          <button
+            type="submit"
+            class="popup__form-submit popup__form-submit_delete"
+            id="submitDelete-card"
+          >
+            Sí
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Editar foto de avatar-->
+    <section class="popup" id="popup-avatar">
+      <div class="popup__container">
+        <img
+          class="popup__close"
+          src="./images/Popup/Close_Icon.svg"
+          alt="Ícono cerrar formulario"
+        />
+        <form class="popup__form" id="form-avatar">
+          <h2 class="popup__form-title">Cambiar foto de perfil</h2>
+          <input
+            type="url"
+            class="popup__form-input"
+            id="input-avatar-url"
+            name="avatar"
+            placeholder="URL de la imagen"
+            required
+          />
+          <span class="input-error input-avatar-error"></span>
+          <button type="submit" class="popup__form-submit">Guardar</button>
+        </form>
       </div>
     </section>
 
