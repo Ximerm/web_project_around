@@ -15,7 +15,73 @@ import {
   formSettings,
   saveCard,
   saveProfile,
+  avatarButton,
+  inputAvatar,
 } from "../components/utils.js";
+import api from "../components/api.js";
+
+//Instancias de clases
+//Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  aboutSelector: ".profile__hobbie",
+  avatarSelector: ".profile__avatar",
+});
+
+// Instancia para Popup Edición Perfil
+const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
+  // Llamar a la API para actualizar el perfil
+  api
+    .updateUser(inputValues.name, inputValues.about)
+    .then((name, about) => {
+      // Actualizar la información del usuario en la interfaz
+      userInfo.setUserInfo({ name, about });
+      popupProfile.close();
+    })
+    .catch((err) => {
+      console.error("Error al actualizar el perfil:", err);
+    });
+});
+popupProfile.setEventListeners();
+
+//Instancia para cambiar de avatar
+const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
+  api
+    .updateUserAvatar(data.avatar)
+    .then((updatedData) => {
+      userInfo.setUserAvatar(data.avatar);
+      avatarPopup.close();
+    })
+    .catch((err) => console.error("Error al actualizar avatar:", err));
+});
+avatarPopup.setEventListeners();
+
+//Cargar datos desde la API
+// Cargar datos del usuario desde la API
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+    });
+    userInfo.setUserAvatar(userData.avatar);
+  })
+  .catch((err) => console.error("Error al obtener datos del usuario:", err));
+
+// Abrir formulario Edición perfil con la información actual cargada
+editButton.addEventListener("click", () => {
+  const userInfoData = userInfo.getUserInfo();
+  nameInput.value = userInfoData.name;
+  aboutInput.value = userInfoData.about;
+  popupProfile.open();
+});
+
+//Abrir formulario Edición Avatar
+avatarButton.addEventListener("click", () => {
+  inputAvatar.value = "";
+  avatarPopup.open();
+});
 
 // Función para crear una nueva tarjeta
 function createCard(name, link) {
@@ -40,20 +106,6 @@ const cardSection = new Section(
 // Renderizar tarjetas iniciales
 cardSection.renderItems();
 
-//Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  aboutSelector: ".profile__hobbie",
-});
-
-// Abrir formulario Edición perfil con la información actual cargada
-editButton.addEventListener("click", () => {
-  const userInfoData = userInfo.getUserInfo();
-  nameInput.value = userInfoData.name;
-  aboutInput.value = userInfoData.about;
-  popupProfile.open();
-});
-
 //Abrir formulario Agregar Card
 addButton.addEventListener("click", () => {
   popupAddCard.open();
@@ -66,15 +118,6 @@ formValidatorProfile.enableValidation();
 //Validación formulario añadir card
 const formValidatorAddCard = new FormValidator(cardForm, formSettings);
 formValidatorAddCard.enableValidation();
-
-//Instancia para Popup Edición Perfil
-const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
-  saveProfile(inputValues.name, inputValues.about, (name, about) => {
-    userInfo.setUserInfo({ name, about });
-  });
-  popupProfile.close();
-});
-popupProfile.setEventListeners();
 
 //Instancia para Popup Agregar card
 const popupAddCard = new PopupWithForm("#popup-add-card", () => {

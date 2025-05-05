@@ -3,6 +3,10 @@ export const nameInput = document.querySelector("#input-name");
 export const aboutInput = document.querySelector("#input-about");
 export const editButton = document.querySelector(".profile__edit-button");
 
+//Variables edición avatar
+export const avatarButton = document.querySelector(".profile__edit-avatar");
+export const inputAvatar = document.querySelector("#popup-avatar");
+
 //Variables añadir tarjeta
 export const addButton = document.querySelector(".profile__add-button");
 const titleInput = document.querySelector("#input-title");
