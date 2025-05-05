@@ -43,13 +43,6 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
-/*
-//Guardar edición perfil
-export function saveProfile(name, about, updateUserInfo) {
-  if (updateUserInfo) {
-    updateUserInfo(name, about);
-  }
-}*/
 
 //Añadir nueva tarjeta
 export function saveCard(addNewCard) {
