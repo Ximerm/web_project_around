@@ -46,7 +46,7 @@ popupProfile.setEventListeners();
 
 //Instancia para cambiar de avatar
 const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
-  api
+  return api
     .updateUserAvatar(data.avatar)
     .then((updatedData) => {
       userInfo.setUserAvatar(data.avatar);
