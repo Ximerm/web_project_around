@@ -105,6 +105,9 @@ api
           const newCard = createCard({
             name: item.name,
             link: item.link,
+            _id: item._id,
+            owner: item.owner,
+            isLiked: item.isLiked,
           });
           cardSection.addItem(newCard);
         },
@@ -131,11 +134,12 @@ function createCard({ name, link, _id, owner, isLiked }, currentUser) {
       handleRemoveLike: (cardId) => {
         return api.removeLike(cardId);
       },
-      handleRemoveCard: (cardId) => {
+      handleRemoveCard: (cardId, deleteCard) => {
         popupConfirmation.open(() => {
           api
             .removeCard(cardId)
             .then(() => {
+              deleteCard();
               popupConfirmation.close();
             })
             .catch((err) => {
