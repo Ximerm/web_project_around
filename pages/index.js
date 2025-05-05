@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopUpWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
@@ -55,6 +56,10 @@ const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
     .catch((err) => console.error("Error al actualizar avatar:", err));
 });
 avatarPopup.setEventListeners();
+
+//Instancia popupConfirmation para usarla al abrir el popup de confirmación de "Borrar tarjeta"
+const popupConfirmation = new PopupWithConfirmation("#popup-delete-card");
+popupConfirmation.setEventListeners();
 
 //Cargar datos desde la API
 // Cargar datos del usuario desde la API
