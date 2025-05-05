@@ -15,7 +15,6 @@ import {
   cardForm,
   formSettings,
   saveCard,
-  saveProfile,
   avatarButton,
   inputAvatar,
 } from "../components/utils.js";
@@ -32,12 +31,11 @@ const userInfo = new UserInfo({
 // Instancia para Popup Edición Perfil
 const popupProfile = new PopupWithForm("#popup-edit", (inputValues) => {
   // Llamar a la API para actualizar el perfil
-  api
+  return api
     .updateUser(inputValues.name, inputValues.about)
-    .then((name, about) => {
-      // Actualizar la información del usuario en la interfaz
-      userInfo.setUserInfo({ name, about });
-      popupProfile.close();
+    .then((data) => {
+      // Actualiza la información del usuario en la interfaz
+      userInfo.setUserInfo({ name: data.name, about: data.about });
     })
     .catch((err) => {
       console.error("Error al actualizar el perfil:", err);
