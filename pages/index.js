@@ -18,6 +18,9 @@ import {
 } from "../components/utils.js";
 import api from "../components/api.js";
 
+// Variable vacía para después crear las tarjetas
+let cardSection = null;
+
 //Instancias de clases
 //Instancia UserInfo para usarla al abrir el formulario "Editar perfil"
 const userInfo = new UserInfo({
@@ -95,7 +98,7 @@ api
 api
   .getInitialCards()
   .then((initialCards) => {
-    const cardSection = new Section(
+    cardSection = new Section(
       {
         items: initialCards.reverse(),
         renderer: (item) => {

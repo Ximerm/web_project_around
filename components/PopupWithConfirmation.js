@@ -21,6 +21,6 @@ export default class PopupWithConfirmation extends Popup {
 
   open(handleConfirm) {
     super.open();
-    this._handleConfirm = handleConfirm;
+    this._handleFormSubmit = handleConfirm;
   }
 }
