@@ -17,15 +17,12 @@ export default class PopupWithForm extends Popup {
       event.preventDefault();
       const inputValues = this._getInputValues();
       this._toggleLoadingState(true); // Mostrar "Guardando..."
-
-      // Llamar a la función de manejo de envío y asegurarse de que devuelva una promesa
       this._handleFormSubmit(inputValues)
         .then(() => {
           this.close(); // Cerrar si la solicitud fue exitosa
         })
         .catch((err) => {
           console.error("Error al enviar formulario:", err);
-          // Aquí puedes manejar el error, por ejemplo, mostrando un mensaje al usuario
         })
         .finally(() => {
           this._toggleLoadingState(false); // Restaurar el botón

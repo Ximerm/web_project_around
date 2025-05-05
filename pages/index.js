@@ -53,23 +53,14 @@ const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
 });
 avatarPopup.setEventListeners();
 
-/*
-//Instancia para Popup Agregar card
-const popupAddCard = new PopupWithForm("#popup-add-card", () => {
-  saveCard((name, link) => {
-    const cardElement = createCard(name, link);
-    cardSection.addItem(cardElement);
-  });
-  popupAddCard.close();
-});
-popupAddCard.setEventListeners();*/
-
 // Instancia para Popup Agregar card
-const popupAddCard = new PopupWithForm("#popup-add-card", (inputValues) => {
+const popupAddCard = new PopupWithForm("#popup-add-card", (data) => {
+  console.log("Datos de la tarjeta:", data);
   return api
-    .addNewCard(inputValues.name, inputValues.link)
-    .then((data) => {
-      const cardElement = createCard(data.name, data.link);
+    .addNewCard(data.name, data.link)
+    .then((newCard) => {
+      console.log("Tarjeta añadida:", newCard);
+      const cardElement = createCard(newCard);
       cardSection.addItem(cardElement);
       popupAddCard.close();
     })
@@ -101,25 +92,60 @@ api
   .catch((err) => console.error("Error al obtener datos del usuario:", err));
 
 // Cargar tarjetas desde la API
-const cardSection = new Section(
-  {
-    items: [],
-    renderer: (item) => {
-      const cardElement = createCard(item.name, item.link);
-      cardSection.addItem(cardElement);
-    },
-  },
-  ".card__element"
-);
 api
   .getInitialCards()
-  .then((cards) => {
-    cards.forEach((card) => {
-      cardSection.addItem(createCard(card.name, card.link));
-    });
+  .then((initialCards) => {
+    const cardSection = new Section(
+      {
+        items: initialCards.reverse(),
+        renderer: (item) => {
+          const newCard = createCard({
+            name: item.name,
+            link: item.link,
+          });
+          cardSection.addItem(newCard);
+        },
+      },
+      ".card__element"
+    );
+    cardSection.renderItems();
   })
-  .catch((err) => console.error("Error al obtener tarjetas:", err));
+  .catch((err) => console.error("Error al cargar tarjetas:", err));
 
+// Función para crear una nueva tarjeta
+function createCard({ name, link, _id, owner, isLiked }, currentUser) {
+  const card = new Card(
+    { name, link, _id, owner, isLiked },
+    currentUser,
+    "#card-template",
+    (name, link) => {
+      popupImage.open(name, link);
+    },
+    {
+      handleAddLike: (cardId) => {
+        return api.addLike(cardId);
+      },
+      handleRemoveLike: (cardId) => {
+        return api.removeLike(cardId);
+      },
+      handleRemoveCard: (cardId) => {
+        popupConfirmation.open(() => {
+          api
+            .removeCard(cardId)
+            .then(() => {
+              popupConfirmation.close();
+            })
+            .catch((err) => {
+              console.error("Error al eliminar la tarjeta:", err);
+            });
+        });
+      },
+    }
+  );
+  return card.renderCard();
+}
+
+//Abrir formularios
 // Abrir formulario Edición perfil con la información actual cargada
 editButton.addEventListener("click", () => {
   const userInfoData = userInfo.getUserInfo();
@@ -139,29 +165,7 @@ addButton.addEventListener("click", () => {
   popupAddCard.open();
 });
 
-// Función para crear una nueva tarjeta
-function createCard(name, link) {
-  const card = new Card(name, link, "#card-template", (name, link) => {
-    popupImage.open(name, link);
-  });
-  return card.renderCard();
-}
-
-// Crear instancia de Section para manejar las tarjetas
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item.name, item.link);
-      cardSection.addItem(cardElement);
-    },
-  },
-  ".card__element"
-);
-
-// Renderizar tarjetas iniciales
-cardSection.renderItems();
-
+//Validación formularios
 //Validación formulario perfil
 const formValidatorProfile = new FormValidator(profileForm, formSettings);
 formValidatorProfile.enableValidation();

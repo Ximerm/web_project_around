@@ -9,8 +9,6 @@ export const inputAvatar = document.querySelector("#popup-avatar");
 
 //Variables añadir tarjeta
 export const addButton = document.querySelector(".profile__add-button");
-const titleInput = document.querySelector("#input-title");
-const linkInput = document.querySelector("#input-link");
 
 //Variables formularios
 export const profileForm = document.querySelector("#form-profile");
@@ -45,23 +43,6 @@ const initialCards = [
   },
 ];
 */
-
-/*
-//Añadir nueva tarjeta
-export function saveCard(addNewCard) {
-  const cardData = {
-    name: titleInput.value,
-    link: linkInput.value,
-  };
-
-  if (addNewCard) {
-    addNewCard(cardData.name, cardData.link);
-  }
-
-  titleInput.value = "";
-  linkInput.value = "";
-}
-  */
 
 //Definir formSettings para validación de formularios
 export const formSettings = {
