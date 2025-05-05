@@ -25,7 +25,7 @@ export default class Card {
       .content.querySelector(".card__content")
       .cloneNode(true);
     this._element.querySelector(".card__photo").src = this._link;
-    this._element.querySelector(".card__photo").alt = this._name;
+    this._element.querySelector(".card__photo-name").alt = this._name;
     this._element.querySelector(".card__photo-name").textContent = this._name;
   }
 

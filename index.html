@@ -39,8 +39,8 @@
 
           <div class="profile__content">
             <div class="profile__info">
-              <p class="profile__name">Jacques Cousteau</p>
-              <p class="profile__hobbie">Explorador</p>
+              <p class="profile__name"></p>
+              <p class="profile__hobbie"></p>
             </div>
             <button class="profile__edit-button">
               <img
@@ -69,7 +69,7 @@
                   src="./images/Places/Trash_Vector.svg"
                   alt="Ícono eliminar"
                 />
-                <img class="card__photo" alt=" " src=" " />
+                <img class="card__photo" alt="" src="" />
                 <div class="card__info">
                   <h2 class="card__photo-name"></h2>
                   <img
@@ -192,7 +192,7 @@
           />
         </button>
         <div class="popup__big-card-content">
-          <img class="popup__image-card" alt=" " src=" " />
+          <img class="popup__image-card" alt="" src="" />
           <p class="popup__image-title"></p>
         </div>
       </div>
@@ -222,13 +222,12 @@
     <!-- Editar foto de avatar-->
     <section class="popup" id="popup-avatar">
       <div class="popup__container">
+        <img
+          class="popup__close"
+          src="./images/Popup/Close_Icon.svg"
+          alt="Ícono cerrar formulario"
+        />
         <form class="popup__form" id="form-avatar">
-          <img
-            class="popup__close"
-            src="./images/Popup/Close_Icon.svg"
-            alt="Cerrar"
-            id="popup__close"
-          />
           <h2 class="popup__form-title">Cambiar foto de perfil</h2>
           <input
             type="url"

@@ -5,7 +5,7 @@ class Api {
   }
 
   // 1. Cargar la información del usuario desde el servidor
-  getUser() {
+  getUserInfo() {
     return this._makeRequest("/users/me");
   }
 

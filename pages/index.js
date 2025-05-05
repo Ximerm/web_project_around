@@ -13,6 +13,8 @@ import {
   profileForm,
   cardForm,
   formSettings,
+  avatarButton,
+  inputAvatar,
 } from "../components/utils.js";
 import api from "../components/api.js";
 
@@ -78,25 +80,44 @@ const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
 });
 avatarPopup.setEventListeners();
 
+// Variable vacía para después crear las tarjetas
+let cardSection = null;
+
 //Cargar datos desde la API
 // Cargar datos del usuario desde la API
-api.getUser().then((user) => {
-  api.getInitialCards().then((cards) => {
-    // Crear instancia de Section para manejar las tarjetas
-    cardSection = new Section(
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+    });
+    userInfo.setUserAvatar(userData.avatar);
+  })
+  .catch((err) => console.error("Error al obtener datos del usuario:", err));
+
+// Cargar tarjetas desde la API
+api
+  .getInitialCards()
+  .then((initialCards) => {
+    const cardSection = new Section(
       {
-        items: cards,
+        items: initialCards.reverse(),
         renderer: (item) => {
-          const cardElement = createCard(item, user);
-          cardSection.addItem(cardElement);
+          const newCard = createCard(
+            item.link,
+            item.name,
+            item._id,
+            item.isLiked
+          );
+          cardSection.addItem(newCard);
         },
       },
       ".card__element"
     );
-    // Renderizar tarjetas iniciales
     cardSection.renderItems();
-  });
-});
+  })
+  .catch((err) => console.error("Error al cargar tarjetas:", err));
 
 //Funciones
 
@@ -129,9 +150,6 @@ function createCard({ name, link, _id, owner, isLiked }, currentUser) {
   return card.renderCard();
 }
 
-// Variable vacía para después crear las tarjetas
-let cardSection = null;
-
 // Abrir formulario Edición perfil con la información actual cargada
 editButton.addEventListener("click", () => {
   const userInfoData = userInfo.getUserInfo();
@@ -143,6 +161,12 @@ editButton.addEventListener("click", () => {
 //Abrir formulario Agregar Card
 addButton.addEventListener("click", () => {
   popupAddCard.open();
+});
+
+//Abrir formulario Edición Avatar
+avatarButton.addEventListener("click", () => {
+  inputAvatar.value = "";
+  avatarPopup.open();
 });
 
 //Validación formulario perfil
