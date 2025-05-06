@@ -28,13 +28,14 @@
 }
 
 .popup__big-card-content {
-  max-width: 816px;
+  max-width: 75vw;
   max-height: 564.52px;
 }
 
 .popup__image-card {
   max-width: 75vw;
   max-height: 75vh;
+  object-fit: contain;
 }
 
 .popup__image-title {
