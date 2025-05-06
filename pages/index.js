@@ -82,22 +82,18 @@ const popupImage = new PopupWithImage("#popup-big-card");
 popupImage.setEventListeners();
 
 //Cargar datos desde la API
-// Cargar datos del usuario desde la API
+// Cargar datos del usuario y las tarjetas desde la API
 api
-  .getUserInfo()
-  .then((userData) => {
+  .getUserAndCards()
+  .then(([userData, initialCards]) => {
+    // Actualiza la información del usuario
     userInfo.setUserInfo({
       name: userData.name,
       about: userData.about,
     });
     userInfo.setUserAvatar(userData.avatar);
-  })
-  .catch((err) => console.error("Error al obtener datos del usuario:", err));
 
-// Cargar tarjetas desde la API
-api
-  .getInitialCards()
-  .then((initialCards) => {
+    // Renderiza las tarjetas
     cardSection = new Section(
       {
         items: initialCards.reverse(),
@@ -116,7 +112,7 @@ api
     );
     cardSection.renderItems();
   })
-  .catch((err) => console.error("Error al cargar tarjetas:", err));
+  .catch((err) => console.error("Error al cargar datos:", err));
 
 // Función para crear una nueva tarjeta
 function createCard({ name, link, _id, owner, isLiked }, currentUser) {

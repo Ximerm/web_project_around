@@ -14,6 +14,11 @@ class Api {
     return this._makeRequest("/cards");
   }
 
+  // 2.1. Cargar información usuario y las tarjetas desde el servidor
+  getUserAndCards() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
+
   // 3. Editar el perfil
   updateUser(name, about) {
     return this._makeRequest("/users/me", "PATCH", { name, about });
