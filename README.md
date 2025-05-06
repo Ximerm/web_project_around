@@ -59,7 +59,11 @@ Esta integración optimiza la experiencia del usuario al proporcionar una navega
 
 # Tecnologías utilizadas:
 
-HTML CSS JavaScript DOM Git
+- HTML5
+- CSS
+- JavaScript
+- DOM
+- Git
 
 # Instrucciones de uso:
 
@@ -69,4 +73,4 @@ HTML CSS JavaScript DOM Git
 
 # Enlace a la página Web:
 
-https://ximerm.github.io/web_project_around/src/index.html
+https://ximerm.github.io/web_project_around/
