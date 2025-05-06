@@ -1,6 +1,6 @@
 .popup__big-card {
-  max-width: 877.28px;
-  max-height: 613.52px;
+  max-width: 90vw;
+  max-height: 90vh;
   margin: auto;
   position: fixed;
   top: 50%;
@@ -28,8 +28,8 @@
 }
 
 .popup__big-card-content {
-  max-width: 75vw;
-  max-height: 564.52px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .popup__image-card {

@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Perfil usuario Alrededor de los EE.UU." />
+    <meta
+      name="description"
+      content="Galería interactiva en la que los usuarios pueden añadir, eliminar o dar me gusta a las fotos."
+    />
     <meta name="author" content="Ximena Rodríguez" />
-    <meta name="keywords" content="html, css, javascript" />
+    <meta
+      name="keywords"
+      content="html, css, javascript, galeria, interactiva"
+    />
     <title>Around the U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="../pages/index.css" />
   </head>
 
   <body>
@@ -15,12 +21,12 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/Header/LogoHeader.svg"
+          src="../images/Header/LogoHeader.svg"
           alt="logo Around The U.S."
         />
         <img
           class="header__line"
-          src="./images/Header/Line.png"
+          src="../images/Header/Line.png"
           alt="línea header"
         />
       </header>
@@ -31,7 +37,7 @@
             <img class="profile__avatar" src=" " alt="Avatar" />
             <button class="profile__edit-avatar">
               <img
-                src="./images/Profile/Update_Avatar_Icon.svg"
+                src="../images/Profile/Update_Avatar_Icon.svg"
                 alt="Botón para editar Avatar"
               />
             </button>
@@ -45,7 +51,7 @@
             <button class="profile__edit-button">
               <img
                 class="profile__edit-button-img"
-                src="./images/Profile/Edit_Button.svg"
+                src="../images/Profile/Edit_Button.svg"
                 alt="Botón para editar perfil"
               />
             </button>
@@ -53,7 +59,7 @@
           <button class="profile__add-button">
             <img
               class="profile__add-button-img"
-              src="./images/Profile/Add_Button.svg"
+              src="../images/Profile/Add_Button.svg"
               alt="Botón para agregar nueva imagen"
             />
           </button>
@@ -66,7 +72,7 @@
               <div class="card__content">
                 <img
                   class="card__photo-delete"
-                  src="./images/Places/Trash_Vector.svg"
+                  src="../images/Places/Trash_Vector.svg"
                   alt="Ícono eliminar"
                 />
                 <img class="card__photo" alt="" src="" />
@@ -74,7 +80,7 @@
                   <h2 class="card__photo-name"></h2>
                   <img
                     class="card__photo-like"
-                    src="./images/Places/Like_Vector.svg"
+                    src="../images/Places/Like_Vector.svg"
                     alt="Ícono 'Me gusta'"
                   />
                 </div>
@@ -94,7 +100,7 @@
       <div class="popup__container">
         <img
           class="popup__close"
-          src="./images/Popup/Close_Icon.svg"
+          src="../images/Popup/Close_Icon.svg"
           alt="Ícono cerrar formulario"
         />
         <form class="popup__form" id="form-profile">
@@ -141,7 +147,7 @@
       <div class="popup__container">
         <img
           class="popup__close"
-          src="./images/Popup/Close_Icon.svg"
+          src="../images/Popup/Close_Icon.svg"
           alt="Ícono cerrar formulario"
         />
         <form class="popup__form" id="form-addCard">
@@ -187,7 +193,7 @@
         <button class="popup__close popup__close_big-card" type="button">
           <img
             class="popup__close-btn-image"
-            src="./images/Popup/Close_Icon.svg"
+            src="../images/Popup/Close_Icon.svg"
             alt="Icono cerrar imagen"
           />
         </button>
@@ -203,7 +209,7 @@
       <div class="popup__container">
         <img
           class="popup__close"
-          src="./images/Popup/Close_Icon.svg"
+          src="../images/Popup/Close_Icon.svg"
           alt="Ícono cerrar formulario"
         />
         <form class="popup__form popup__form_height_low" id="form-deleteCard">
@@ -226,7 +232,7 @@
       <div class="popup__container">
         <img
           class="popup__close"
-          src="./images/Popup/Close_Icon.svg"
+          src="../images/Popup/Close_Icon.svg"
           alt="Ícono cerrar formulario"
         />
         <form class="popup__form" id="form-avatar">
@@ -245,6 +251,6 @@
       </div>
     </section>
 
-    <script src="./pages/index.js" type="module"></script>
+    <script src="../pages/index.js" type="module"></script>
   </body>
 </html>
