@@ -73,4 +73,4 @@ Esta integración optimiza la experiencia del usuario al proporcionar una navega
 
 # Enlace a la página Web:
 
-https://ximerm.github.io/web_project_around/
+https://ximerm.github.io/web_project_around/src
